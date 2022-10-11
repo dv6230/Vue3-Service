@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Vue3_Service.Entity;
+using Vue3_Service.Model;
 using Vue3_Service.Services;
 
 namespace Vue3_Service.Controllers
@@ -30,10 +31,14 @@ namespace Vue3_Service.Controllers
 			var token = Utilities.Token.CreateToken(user.Email);
 			var boo = userService.LoginRecord(user.Id, token);
 
-			if (boo) return Ok(100);
+			if (!boo) return Ok(new Reponse() { message = "帳號或密碼錯誤", status = "fail" });
 
+			Dictionary<string, object> data = new Dictionary<string, object>();
+			data["token"] = token;
+			data["userId"] = user.Id;
+			data["userName"] = user.Name;
 
-			return Ok(400);
+			return Ok(new Reponse() { message = "登入成功", status = "success", data = data });
 
 		}
 	}

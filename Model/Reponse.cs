@@ -2,8 +2,8 @@
 {
 	public class Reponse
 	{
-		public Object data { get; set; }
-		public string status { get; set; }
-		public string message { get; set; }
+		public Object data { get; set; } = new Object();
+		public string status { get; set; } = String.Empty;
+		public string message { get; set; } = String.Empty;
 	}
 }

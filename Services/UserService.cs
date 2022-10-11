@@ -21,6 +21,9 @@
 
 		public bool LoginRecord(int userId, string token)
 		{
+
+			var row = _context.UserLogins.Where(x => x.UserId == userId);
+			_context.UserLogins.RemoveRange(row);
 			_context.UserLogins.Add(new Entity.UserLogin() { Token = token, UserId = userId, ExpireTime = DateTime.Now.AddHours(1) });
 
 			try
