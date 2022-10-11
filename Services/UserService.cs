@@ -9,19 +9,19 @@
 			this._context = myDB;
 		}
 
-		public bool CheckUser(Parameter.Login login)
+		public Entity.User? CheckUser(Parameter.Login login)
 		{
-			var user = _context.Users.Where(x => x.Email == login.Email).FirstOrDefault();
+			var user = _context.Users.Where(x => x.Email == login.Email).Where(x => x.Password == login.Password).FirstOrDefault();
 
+			if (user != null) return user;
 
-
-			return false;
+			return null;
 		}
 
 
-		public bool InsertLogin(int userId)
+		public bool LoginRecord(int userId, string token)
 		{
-			_context.UserLogins.Add(new Entity.UserLogin() { Token = "tt", UserId = userId, ExpireTime = DateTime.Now });
+			_context.UserLogins.Add(new Entity.UserLogin() { Token = token, UserId = userId, ExpireTime = DateTime.Now.AddHours(1) });
 
 			try
 			{
