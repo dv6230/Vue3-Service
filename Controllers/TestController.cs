@@ -16,10 +16,30 @@ namespace Vue3_Service.Controllers
 		}
 
 		[HttpGet]
-		[ActionFilter(str:"test")]
+		[ActionFilter(str: "test")]
 		public IActionResult Test2()
 		{
 			return Ok(200);
 		}
+
+		[HttpGet]
+		[ApiExplorerSettings(IgnoreApi = true)]  // Swagger 隱藏此 API
+		public IActionResult Test3()
+		{
+			return Ok("hidden");
+		}
+
+		[HttpGet]
+		public IActionResult TestMD5(string content)
+		{
+			return Ok(Utilities.StringHash.MD5(content));
+		}
+
+		[HttpGet]
+		public IActionResult TestSha256(string content)
+		{
+			return Ok(Utilities.StringHash.SHA256(content));
+		}
+
 	}
 }
