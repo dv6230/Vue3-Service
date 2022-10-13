@@ -8,8 +8,8 @@ namespace Vue3_Service.Controllers
 	[ApiController]
 	public class TestController : ControllerBase
 	{
-		[HttpPost]
 
+		[HttpPost]
 		public IActionResult Test1()
 		{
 			return Ok(100);
@@ -27,6 +27,12 @@ namespace Vue3_Service.Controllers
 		public IActionResult Test3()
 		{
 			return Ok("hidden");
+		}
+
+		[HttpGet]
+		[TypeFilter(typeof(AuthFilter2))]
+		public IActionResult Test4() {
+			return Ok("通過驗證");
 		}
 
 		[HttpGet]
