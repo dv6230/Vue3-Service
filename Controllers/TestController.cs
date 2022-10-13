@@ -36,6 +36,13 @@ namespace Vue3_Service.Controllers
 		}
 
 		[HttpGet]
+		[TypeFilter(typeof(AuthFilter3))]
+		public IActionResult Test5()
+		{
+			return Ok("通過驗證");
+		}
+
+		[HttpGet]
 		public IActionResult TestMD5(string content)
 		{
 			return Ok(Utilities.StringHash.MD5(content));
