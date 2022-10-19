@@ -16,7 +16,7 @@ namespace Vue3_Service.Filters
 		}
 
 		/// <summary>
-		/// Called asynchronously before the action, after model binding is complete.
+		/// 登入驗證功能
 		/// </summary>
 		/// <param name="context">The <see cref="T:Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext" />.</param>
 		/// <param name="next">The <see cref="T:Microsoft.AspNetCore.Mvc.Filters.ActionExecutionDelegate" />. Invoked to execute the next action filter or the action itself.</param>
